@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from flask import Flask
-from flask import render_template
-from flask import g
+from flask import Flask,render_template, g
 from .database import Database
+import random
+
 
 app = Flask(__name__, static_url_path="", static_folder="static")
 
@@ -35,6 +35,8 @@ def close_connection(exception):
 
 
 @app.route('/')
-def form():
-    # À remplacer par le contenu de votre choix.
-    return render_template('form.html')
+def index():
+    db = get_db()
+    liste_animaux = db.get_animaux()
+    animaux_aleatoire = random.sample(liste_animaux, min(len(liste_animaux),5))
+    return render_template('index.html', animaux=animaux_aleatoire)
