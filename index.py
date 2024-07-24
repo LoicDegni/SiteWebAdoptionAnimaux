@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from flask import Flask,render_template, g
+from flask import Flask,render_template, g, request, redirect, url_for
 from .database import Database
 import random
 
@@ -40,3 +40,12 @@ def index():
     liste_animaux = db.get_animaux()
     animaux_aleatoire = random.sample(liste_animaux, min(len(liste_animaux),5))
     return render_template('index.html', animaux=animaux_aleatoire)
+
+@app.route('/ajouter_un_animal', methods=["GET", "POST"])
+def ajouter_un_animal():
+    if(request.method == 'POST'):
+        db = get_db()
+        liste_animaux = db.get_animaux()
+        animaux_aleatoire = random.sample(liste_animaux, min(len(liste_animaux),5))
+        return redirect(url_for('index'))
+    return render_template('ajouter.html')

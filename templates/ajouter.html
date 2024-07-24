@@ -1,0 +1,27 @@
+{%extends 'base.html' %}
+
+{% block title %} Adopter un animal {% endblock %}
+
+{% block content %}
+    <form action="{{ url_for('ajouter_un_animal') }}" method="post" id="formulaire">
+
+        <div>
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom">
+            <span id="erreurNom", class="erreur"></span>
+        </div>
+        
+        <div>
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age">
+            <span id="erreurAge", class="erreur"></span>
+        </div>
+
+
+
+
+        <button type="submit">Soumettre</button>
+    </form>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{%endblock%}
