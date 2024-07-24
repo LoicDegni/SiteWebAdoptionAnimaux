@@ -48,5 +48,6 @@ def ajouter_un_animal():
         espece = request.form['espece']
         race = request.form['race']
         age = request.form['age']
+        description = request.form['description']
         return redirect(url_for('index'))
     return render_template('ajouter.html')
