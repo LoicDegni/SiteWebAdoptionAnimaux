@@ -43,9 +43,10 @@ def index():
 
 @app.route('/ajouter_un_animal', methods=["GET", "POST"])
 def ajouter_un_animal():
-    if(request.method == 'POST'):
-        db = get_db()
-        liste_animaux = db.get_animaux()
-        animaux_aleatoire = random.sample(liste_animaux, min(len(liste_animaux),5))
+    if request.method == 'POST':
+        nom = request.form['nom']
+        espece = request.form['espece']
+        race = request.form['race']
+        age = request.form['age']
         return redirect(url_for('index'))
     return render_template('ajouter.html')
