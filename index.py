@@ -12,9 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from flask import Flask,render_template, g, request, redirect, url_for
+from flask import Flask,render_template, g, request, redirect, url_for, flash
 from .database import Database
 import random
+import re
 
 
 app = Flask(__name__, static_url_path="", static_folder="static")
@@ -49,5 +50,49 @@ def ajouter_un_animal():
         race = request.form['race']
         age = request.form['age']
         description = request.form['description']
+        courriel = request.form['courriel']
+        adresse = request.form['adresse']
+        ville = request.form['ville']
+        code_postal = request.form['codePostal']
+
+        erreurs = []
+
+        # Validation côté backend
+        if not nom or len(nom) < 3 or len(nom) > 20:
+            erreurs.append("Le nom de l'animal doit être entre 3 et 20 caractères.")
+        
+        if not espece:
+            erreurs.append("Vous devez renseigner l'espèce de l'animal.")
+        
+        if not race:
+            erreurs.append("Vous devez renseigner la race de l'animal.")
+        
+        if not age.isdigit() or int(age) < 0 or int(age) > 30:
+            erreurs.append("L'âge de l'animal doit être compris entre 0 et 30.")
+        
+        if not description.strip():
+            erreurs.append("Vous devez renseigner la description de l'animal.")
+        
+        if not courriel or not re.fullmatch(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', courriel):
+            erreurs.append("Votre courriel n'est pas valide.")
+        
+        if not adresse or not re.fullmatch(r'^[0-9]+\s+[a-zA-Z0-9\s,.\'-]+$', adresse):
+            erreurs.append("L'adresse n'est pas valide.")
+        
+        if not ville or not re.match(r'^[a-zA-Z\s,.\'-]{2,}$', ville):
+            erreurs.append("La ville n'est pas valide.")
+        
+        if not code_postal or not re.fullmatch(r'^[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d$', code_postal):
+            erreurs.append("Le code postal n'est pas valide.")
+
+        if erreurs:
+            for erreur in erreurs:
+                flash(erreur, 'danger')
+            return render_template('ajouter.html')
+        
+        #Ajout de l'animal à la base de données
+        db = get_db()
+        db.add_animal(nom, espece, race, age, description, courriel, adresse, ville, code_postal)
+        # flash("L'animal a été ajouté avec succès!", 'success')
         return redirect(url_for('index'))
     return render_template('ajouter.html')

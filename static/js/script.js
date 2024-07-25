@@ -183,12 +183,9 @@ document.addEventListener('DOMContentLoaded', function() {
             !validerVille() ||
             !validerCodePostal()
         ){
-            console.log("Il y a des erreurs")
             e.preventDefault();
             return;
         }
-        console.log("Formulaire valide");
     });
 
 });
-
