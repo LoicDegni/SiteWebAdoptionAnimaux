@@ -42,6 +42,12 @@ def index():
     animaux_aleatoire = random.sample(liste_animaux, min(len(liste_animaux),5))
     return render_template('index.html', animaux=animaux_aleatoire)
 
+@app.route('/animal<int:id_animal>')
+def animal(id_animal):
+    db = get_db()
+    animal = db.get_animal(id_animal)
+    return render_template('animal.html', animal=animal)
+
 @app.route('/ajouter_un_animal', methods=["GET", "POST"])
 def ajouter_un_animal():
     if request.method == 'POST':
@@ -92,7 +98,7 @@ def ajouter_un_animal():
         
         #Ajout de l'animal à la base de données
         db = get_db()
-        db.add_animal(nom, espece, race, age, description, courriel, adresse, ville, code_postal)
+        id_animal_ajoute = db.add_animal(nom, espece, race, age, description, courriel, adresse, ville, code_postal)
         # flash("L'animal a été ajouté avec succès!", 'success')
-        return redirect(url_for('index'))
+        return redirect(url_for('animal', id_animal=id_animal_ajoute))
     return render_template('ajouter.html')
