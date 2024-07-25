@@ -4,7 +4,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const espece = document.getElementById('espece');
     const race = document.getElementById('race');
     const description = document.getElementById('description');
-    const formulaire = document.getElementById('formulaire')
+    const formulaire = document.getElementById('formulaire');
+    const courriel = document.getElementById('courriel');
+    const adresse = document.getElementById('adresse');
+    const ville = document.getElementById('ville');
+    const codePostal = document.getElementById('codePostal');
 
 
     //Fonction de validation
@@ -19,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
             erreurNom.textContent = "Le nom de l'animal doit être entre 3 et 20 caractères"
             return false;
         }
+        espece.disabled = false;
         return true;
     }
 
@@ -29,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
             erreurEspece.textContent = "Vous devez renseigner l'espece de l'animal";
             return false;
         }
+        race.disabled = false;
         return true;
     }
 
@@ -39,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
             erreurRace.textContent = "Vous devez renseigner la race de l'animal"
             return false;
         }
+        age.disabled = false;
         return true;
     }
 
@@ -53,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
             erreurAge.style.display = 'inline';
             return false;
         }
+        description.disabled = false;
         return true;
     }
 
@@ -64,7 +72,75 @@ document.addEventListener('DOMContentLoaded', function() {
             erreurDescription.textContent = "Vous devez renseigner la description de l'animal";
             return false;
         }
+        courriel.disabled = false;
         return true;
+    }
+
+    function validerCourriel(){
+        var erreurCourriel = document.getElementById('erreurCourriel');
+        erreurCourriel.textContent = '';
+        if(courriel.value === ''){
+            erreurCourriel.textContent = "Vous devez renseigner votre courriel";
+            return false;
+        }else{
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if(!emailRegex.test(courriel.value)){
+                erreurCourriel.textContent = "Votre courriel n'est pas valide.";
+                return false;
+            }
+            adresse.disabled = false;
+            return true;
+        }
+    }
+
+    function validerAdresse(){
+        var erreurAdresse = document.getElementById('erreurAdresse');
+        erreurAdresse.textContent = '';
+        if(adresse.value === ''){
+            erreurAdresse.textContent = "Vous devez renseigner l'adresse";
+            return false;
+        }else{
+            const adresseRegex = /^[0-9]+\s+[a-zA-Z0-9\s,.'-]+$/;
+            if(!adresseRegex.test(adresse.value)){
+                erreurAdresse.textContent = "L'adresse n'est pas valide.";
+                return false;
+            }
+            ville.disabled = false;
+            return true;
+        }
+    }
+
+    function validerVille(){
+        var erreurVille = document.getElementById('erreurVille');
+        erreurVille.textContent = '';
+        if(ville.value === ''){
+            erreurVille.textContent = "Vous devez renseigner la ville";
+            return false;
+        }else{
+            const villeRegex = /^[a-zA-Z\s,.'-]{2,}$/;
+            if(!villeRegex.test(ville.value)){
+                erreurVille.textContent = "La ville n'est pas valide.";
+                return false;
+            }
+            codePostal.disabled = false;
+            return true;
+        }
+    }
+
+    function validerCodePostal(){
+        var erreurCodePostal = document.getElementById('erreurCodePostal');
+        erreurCodePostal.textContent = '';
+        if(codePostal.value === ''){
+            erreurCodePostal.textContent = "Vous devez renseigner le code postal";
+            return false;
+        }else{
+            const codePostalRegex = /^[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d$/;
+            if(!codePostalRegex.test(codePostal.value)){
+                erreurCodePostal.textContent = "Mauvais format. Le code postal n'est pas valide.";
+                return false;
+            }
+            return true;
+        }
     }
 
 
@@ -88,6 +164,10 @@ document.addEventListener('DOMContentLoaded', function() {
     ajouterEcouteursEvenements(espece, validerEspece);
     ajouterEcouteursEvenements(race, validerRace);
     ajouterEcouteursEvenements(description, validerDescritpion);
+    ajouterEcouteursEvenements(courriel, validerCourriel);
+    ajouterEcouteursEvenements(adresse, validerAdresse);
+    ajouterEcouteursEvenements(ville, validerVille);
+    ajouterEcouteursEvenements(codePostal, validerCodePostal);
 
 
     //Fonction de soumission
@@ -97,7 +177,11 @@ document.addEventListener('DOMContentLoaded', function() {
             !validerEspece() ||
             !validerRace() ||
             !validerAge() ||
-            !validerDescritpion()
+            !validerDescritpion() ||
+            !validerCourriel() ||
+            !validerAdresse() ||
+            !validerVille() ||
+            !validerCodePostal()
         ){
             console.log("Il y a des erreurs")
             e.preventDefault();
