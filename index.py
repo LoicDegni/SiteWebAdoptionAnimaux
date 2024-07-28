@@ -48,6 +48,10 @@ def animal(id_animal):
     animal = db.get_animal(id_animal)
     return render_template('animal.html', animal=animal)
 
+@app.route('/adopter')
+def adopter():
+    return render_template('adopter.html')
+
 @app.route('/rechercher')
 def rechercher():
     requete = request.args.get('critere-de-recherche', '')
@@ -60,7 +64,7 @@ def rechercher():
             for valeur in animal.values():
                 if requete.lower() in str(valeur).lower() and animal not in resultat:
                     resultat.append(animal)
-    return render_template('rechercher.html', animaux=resultat)
+    return render_template('resultat.html', animaux=resultat)
 
 @app.route('/ajouter_un_animal', methods=["GET", "POST"])
 def ajouter_un_animal():

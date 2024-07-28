@@ -1,0 +1,17 @@
+{%extends 'base.html' %}
+
+{% block title %} Resultat de la recherche {% endblock %}
+
+
+{% block content %} 
+    <form action='/rechercher' method="GET">
+        <input type="search" placeholder="Rechercher un animal à adopter" name="critere-de-recherche">
+        <button type="submit">Rechercher</button>
+    </form>
+
+    {% for animal in animaux %}
+        <h3>{{animal.nom}}</h3>
+        <p>{{animal.description}}</p>
+        <a href="{{ url_for('animal', id_animal=animal['id']) }}">En savoir plus</a>
+    {%endfor%}
+{%endblock%}
