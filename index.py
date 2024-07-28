@@ -42,7 +42,7 @@ def index():
     animaux_aleatoire = random.sample(liste_animaux, min(len(liste_animaux),5))
     return render_template('index.html', animaux=animaux_aleatoire)
 
-@app.route('/animal<int:id_animal>')
+@app.route('/animal/<int:id_animal>')
 def animal(id_animal):
     db = get_db()
     animal = db.get_animal(id_animal)
