@@ -48,6 +48,20 @@ def animal(id_animal):
     animal = db.get_animal(id_animal)
     return render_template('animal.html', animal=animal)
 
+@app.route('/rechercher')
+def rechercher():
+    requete = request.args.get('critere-de-recherche', '')
+    db = get_db()
+    animaux = db.get_animaux()
+    resultat = []
+
+    if(requete):
+        for animal in animaux:
+            for valeur in animal.values():
+                if requete.lower() in str(valeur).lower() and animal not in resultat:
+                    resultat.append(animal)
+    return render_template('rechercher.html', animaux=resultat)
+
 @app.route('/ajouter_un_animal', methods=["GET", "POST"])
 def ajouter_un_animal():
     if request.method == 'POST':
