@@ -4,15 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
     <title>{% block title %} {% endblock %}</title>
 </head>
 <body>
     <header>
         <nav class="nav justify-content-center">
             <ul class="nav nav-tabs">
-                <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Accueil</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ url_for('ajouter_un_animal') }}">Adopter un animal</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ url_for('adopter')}}">Rechercher un animal</a></li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.endpoint == 'index' %}active{% endif %}" href="{{ url_for('index') }}">Accueil</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {% if request.endpoint == 'ajouter_un_animal' %}active{% endif %}" href="{{ url_for('ajouter_un_animal') }}">Adopter un animal</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link {% if request.endpoint == 'adopter' %}active{% endif %}" href="{{ url_for('adopter') }}">Rechercher un animal</a>
+                </li>
             </ul>
         </nav>
     </header>

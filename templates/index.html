@@ -3,16 +3,21 @@
 {% block title %} Accueil {% endblock %}
 
 {% block content %} 
-    <h2>Animaux en vedette</h2>
+    <h2 class="text-center text-dark">Animaux en vedette</h2>
 
     <div class="d-flex flex-wrap justify-content-center">
         {% for animal in animaux %}
-            <div class="card" style="max-width: 20rem; margin: 10px;">
-                <div class="card-body">
-                    <h5 class="card-title">{{ animal.nom }}</h5>
+            <div class="card" style="width: 20rem; height: 15rem; margin: 10px;">
+                <div class="card-header">
+                    <h5 class="text-body-secondary">{{ animal.nom }}</h5>
+                  </div>
+                <div class="card-body" style="overflow-y: auto;">
                     <p class="card-text">{{ animal.description }}</p>
                 </div>
-            </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary"><a href="{{ url_for('animal', id_animal=animal.id) }}">En savoir plus</a></small>
+                </div>
+            </div>      
         {% endfor %}
     </div>
 {%endblock%}
