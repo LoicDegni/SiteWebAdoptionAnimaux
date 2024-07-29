@@ -8,11 +8,11 @@
 </head>
 <body>
     <header>
-        <nav class="nav container justify-content-center bg">
-            <ul>
-                <li><a href="{{ url_for('index') }}">Accueil</a></li>
-                <li><a href="{{ url_for('ajouter_un_animal') }}">Adopter un animal</a></li>
-                <li><a href="{{ url_for('adopter')}}">Rechercher un animal</a></li>
+        <nav class="nav justify-content-center">
+            <ul class="nav nav-tabs">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('ajouter_un_animal') }}">Adopter un animal</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('adopter')}}">Rechercher un animal</a></li>
             </ul>
         </nav>
     </header>
