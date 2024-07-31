@@ -3,15 +3,39 @@
 {% block title %} Accueil {% endblock %}
 
 {% block content %} 
-    <h2 class="text-center text-dark">Animaux en vedette</h2>
 
+    <div class="container mt-4">
+        <div class="container mt-4">
+            <div class="d-flex justify-content-between">
+                <div class="p-2 d-inline-block text-justify h-100">
+                    <p class="fw-bold">Option 1: Venir à notre refuge</p>
+                    <p>Visitez notre refuge pour rencontrer nos animaux en personne. 
+                        Notre personnel dévoué sera heureux de vous aider à trouver le compagnon idéal.
+                        Vous pourrez passer du temps avec nos animaux et voir lequel s'entend le mieux 
+                        avec vous et votre famille. Notre refuge est ouvert tous les jours de 
+                        la semaine de 10h à 18h.
+                </div>
+                <div class="p-2 d-inline-block text-justify h-100">
+                    <p class="fw-bold">Option 2: Remplir le formulaire d'adoption</p>
+                    <p >Si vous ne pouvez pas venir en personne, vous pouvez toujours adopter un 
+                    animal en remplissant notre formulaire d'adoption en ligne. 
+                    Vous pouvez ainsi voir la liste des animaux des animaux disponibles avec leur description ou
+                    faire une recherche pour trouver un animal qui vous convient. Vous pouvez donc être en contact avec
+                    le propiétaire de l'animal pour plus d'informations et pour adopter l'animal.</p>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="text-center text-dark">Animaux en vedette</h2>
     <div class="d-flex flex-wrap justify-content-center">
         {% for animal in animaux %}
-            <div class="card" style="width: 20rem; height: 15rem; margin: 10px;">
+            <div class="card custom-card">
                 <div class="card-header">
                     <h5 class="text-body-secondary">{{ animal.nom }}</h5>
                   </div>
-                <div class="card-body" style="overflow-y: auto;">
+                <div class="card-body custom-card-body">
                     <p class="card-text">{{ animal.description }}</p>
                 </div>
                 <div class="card-footer">
