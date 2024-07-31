@@ -2,8 +2,23 @@
 
 {% block title %} Accueil {% endblock %}
 
-{% block content %} 
+{% block content %}
+<div class="container-fluid px-4">
+    <div class="row">
+        <div class="col-12 px-0">
+            <div class="banniere">
+                <div class="contenu-baniere">
+                    <h1>Vous voulez <span class="mot-banniere">Adopter ?</span></h1>
+                    <p>Trouver votre compagnon de vie sans attendre !</p>
+                    <a href="/adopter" class="btn btn-primary mt-2">Consulter les animaux disponibles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+
+    
     <div class="container mt-4">
         <div class="container mt-4">
             <div class="text-center">
@@ -45,11 +60,11 @@
     <h2 class="text-center text-dark">Animaux en vedette</h2>
     <div class="d-flex flex-wrap justify-content-center">
         {% for animal in animaux %}
-            <div class="card custom-card">
+            <div class="card card-personnalise">
                 <div class="card-header">
                     <h5 class="text-body-secondary">{{ animal.nom }}</h5>
                   </div>
-                <div class="card-body custom-card-body">
+                <div class="card-body card-corps">
                     <p class="card-text">{{ animal.description }}</p>
                 </div>
                 <div class="card-footer">
