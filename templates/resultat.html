@@ -14,4 +14,9 @@
         <p>{{animal.description}}</p>
         <a href="{{ url_for('animal', id_animal=animal['id']) }}">En savoir plus</a>
     {%endfor%}
+
+    {% if message %}
+        <h1>{{message}}</h1>
+    {% endif %}
+    
 {%endblock%}
