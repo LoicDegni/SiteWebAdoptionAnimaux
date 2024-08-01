@@ -4,10 +4,14 @@
 
 
 {% block content %} 
-    <form action='/rechercher' method="GET">
-        <input type="search" placeholder="Rechercher un animal à adopter" name="critere-de-recherche">
-        <button type="submit">Rechercher</button>
-    </form>
+
+    <div class="container mt-5">
+        <form class="d-flex mx-3" action="/rechercher" method="GET">
+            <input class="form-control me-2" type="search" placeholder="Rechercher un animal à adopter" name="critere-de-recherche">
+            <button class="btn btn-outline-success" type="submit">Rechercher</button>
+        </form>
+    </div>
+
 
     {% for animal in animaux %}
         <h3>{{animal.nom}}</h3>
@@ -16,7 +20,7 @@
     {%endfor%}
 
     {% if message %}
-        <h1>{{message}}</h1>
+        <h1 class="text-center text-danger mt-5">{{message}}</h1>
     {% endif %}
     
 {%endblock%}
