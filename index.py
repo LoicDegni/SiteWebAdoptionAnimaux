@@ -50,7 +50,9 @@ def animal(id_animal):
 
 @app.route('/adopter')
 def adopter():
-    return render_template('adopter.html')
+    db = get_db()
+    animaux = db.get_animaux()
+    return render_template('adopter.html', animaux = animaux)
 
 @app.route('/rechercher')
 def rechercher():
