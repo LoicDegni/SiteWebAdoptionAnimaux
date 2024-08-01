@@ -31,9 +31,10 @@ img{
 }
 
 .fond_ecran{
-    background: url('/images/famille.png') no-repeat center center;
+    background: url('/images/famille.png') no-repeat center top;
     background-size: cover;
     background-attachment: fixed;
+    background-position: center 35px;
     height: 450px;
     display: flex;
     justify-content: center;
