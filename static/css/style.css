@@ -29,3 +29,11 @@ img{
     color: white;
     padding: 20px;
 }
+
+.fond_ecran{
+    background: url('/images/famille.png') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+    justify-content: center;
+}

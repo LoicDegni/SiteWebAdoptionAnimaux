@@ -5,6 +5,8 @@
 {% block content %}
     <form action="{{ url_for('ajouter_un_animal') }}" method="post" id="formulaire">
 
+
+    <div class="fond_ecran">
         <div>
             <label for="nom">Nom</label>
             <input type="text" id="nom" name="nom" placeholder="ex: Leo">
@@ -59,8 +61,12 @@
             <span id="erreurCodePostal" class="erreur"></span>
         </div>
 
+        
+
         <button type="submit">Soumettre</button>
     </form>
+
+    </div>
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 {%endblock%}
