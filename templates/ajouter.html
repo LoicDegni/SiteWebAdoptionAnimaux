@@ -1,72 +1,82 @@
-{%extends 'base.html' %}
+{% extends 'base.html' %}
 
 {% block title %} Adopter un animal {% endblock %}
 
 {% block content %}
-    <form action="{{ url_for('ajouter_un_animal') }}" method="post" id="formulaire">
 
-
-    <div class="fond_ecran">
-        <div>
-            <label for="nom">Nom</label>
-            <input type="text" id="nom" name="nom" placeholder="ex: Leo">
-            <span id="erreurNom", class="erreur"></span>
+    <div class="container-fluid px-4">
+        <div class="row">
+            <div class="col-12 px-0 position-relative">
+                <div class="fond_ecran d-flex align-items-center">
+                    <div class="contenu-baniere text-start position-absolute top-50 start-0 translate-middle-y">
+                        <h1>Vous voulez <span class="text-primary">Adopter ?</span></h1>
+                        <p>Trouver votre compagnon de vie sans attendre !</p>
+                        <a href="/adopter" class="btn btn-primary mt-2">Consulter les animaux disponibles</a>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
 
-        <div>
-            <label for="espece">Espece</label>
-            <input type="text" id="espece" name="espece" placeholder="ex: Chat" disabled>
-            <span id="erreurEspece" class="erreur"></span>
-        </div>
+    <div class="container mt-4">
+        <form action="{{ url_for('ajouter_un_animal') }}" method="post" id="formulaire">
+            <div class="mb-3">
+                <label for="nom" class="form-label">Nom</label>
+                <input type="text" id="nom" name="nom" class="form-control" placeholder="ex: Leo">
+                <div id="erreurNom" class="form-text text-danger"></div>
+            </div>
 
-        <div>
-            <label for="race">Race</label>
-            <input type="text" id="race" name="race" placeholder="Bengal" disabled>
-            <span id="erreurRace" class="erreur"></span>
-        </div>
+            <div class="mb-3">
+                <label for="espece" class="form-label">Espèce</label>
+                <input type="text" id="espece" name="espece" class="form-control" placeholder="ex: Chat" disabled>
+                <div id="erreurEspece" class="form-text text-danger"></div>
+            </div>
 
-        <div>
-            <label for="age">Age</label>
-            <input type="number" id="age" name="age" placeholder="Age entre [0-30]" disabled>
-            <span id="erreurAge" class="erreur"></span>
-        </div>
+            <div class="mb-3">
+                <label for="race" class="form-label">Race</label>
+                <input type="text" id="race" name="race" class="form-control" placeholder="Bengal" disabled>
+                <div id="erreurRace" class="form-text text-danger"></div>
+            </div>
 
-        <div>
-            <label for="description">Description</label>
-            <textarea name="description" id="description" placeholder="ex: Chat très intelligent" disabled></textarea>
-            <span id="erreurDescription" class="erreur"></span>
-        </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Âge</label>
+                <input type="number" id="age" name="age" class="form-control" placeholder="Âge entre [0-30]" disabled>
+                <div id="erreurAge" class="form-text text-danger"></div>
+            </div>
 
-        <div>
-            <label for="courriel">Courriel</label>
-            <input type="text" name="courriel" id="courriel" placeholder="ex: alpha@gmail.ca" disabled>
-            <span id="erreurCourriel" class="erreur"></span>
-        </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="description" id="description" class="form-control" placeholder="ex: Chat très intelligent" disabled></textarea>
+                <div id="erreurDescription" class="form-text text-danger"></div>
+            </div>
 
-        <div>
-            <label for="adresse">Adresse</label>
-            <input type="text" name="adresse" id="adresse" placeholder="ex: 123 avenue de la gloire" disabled>
-            <span id="erreurAdresse" class="erreur"></span>
-        </div>
+            <div class="mb-3">
+                <label for="courriel" class="form-label">Courriel</label>
+                <input type="email" name="courriel" id="courriel" class="form-control" placeholder="ex: alpha@gmail.ca" disabled>
+                <div id="erreurCourriel" class="form-text text-danger"></div>
+            </div>
 
-        <div>
-            <label for="ville">Ville</label>
-            <input type="text" name="ville" id="ville" placeholder="ex: Montreal" disabled>
-            <span id="erreurVille" class="erreur"></span>
-        </div>
+            <div class="mb-3">
+                <label for="adresse" class="form-label">Adresse</label>
+                <input type="text" name="adresse" id="adresse" class="form-control" placeholder="ex: 123 avenue de la gloire" disabled>
+                <div id="erreurAdresse" class="form-text text-danger"></div>
+            </div>
 
-        <div>
-            <label for="codePostal">Code Postal</label>
-            <input type="text" name="codePostal" id="codePostal" placeholder="ex: A1A 1A1" disabled>
-            <span id="erreurCodePostal" class="erreur"></span>
-        </div>
+            <div class="mb-3">
+                <label for="ville" class="form-label">Ville</label>
+                <input type="text" name="ville" id="ville" class="form-control" placeholder="ex: Montreal" disabled>
+                <div id="erreurVille" class="form-text text-danger"></div>
+            </div>
 
-        
+            <div class="mb-3">
+                <label for="codePostal" class="form-label">Code Postal</label>
+                <input type="text" name="codePostal" id="codePostal" class="form-control" placeholder="ex: A1A 1A1" disabled>
+                <div id="erreurCodePostal" class="form-text text-danger"></div>
+            </div>
 
-        <button type="submit">Soumettre</button>
-    </form>
-
+            <button type="submit" class="btn btn-primary">Soumettre</button>
+        </form>
     </div>
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-{%endblock%}
+{% endblock %}
