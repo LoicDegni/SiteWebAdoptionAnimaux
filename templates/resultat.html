@@ -4,7 +4,6 @@
 
 
 {% block content %} 
-
     <div class="container mt-5">
         <form class="d-flex mx-3" action="/rechercher" method="GET">
             <input class="form-control me-2" type="search" placeholder="Rechercher un animal à adopter" name="critere-de-recherche">
@@ -12,12 +11,20 @@
         </form>
     </div>
 
-
-    {% for animal in animaux %}
-        <h3>{{animal.nom}}</h3>
-        <p>{{animal.description}}</p>
-        <a href="{{ url_for('animal', id_animal=animal['id']) }}">En savoir plus</a>
-    {%endfor%}
+    <h2 class="text-center text-dark">Résultat de la recherche pour le critère: </h2>
+    <div class="d-flex flex-wrap justify-content-center">
+        {% for animal in animaux %}
+            <div class="card card-personnalise">
+                <div class="card-header">
+                    <h5 class="text-body-secondary text-center">{{ animal.nom }}</h5>
+                </div>
+            <div class="card-body card-corps">
+                <p class="card-text">{{ animal.description }}</p>
+            </div>
+            <div class="card-footer text-center">
+                <small class="text-body-secondary"><a href="{{ url_for('animal', id_animal=animal.id) }}">En savoir plus</a></small>
+            </div>
+    </div>    
 
     {% if message %}
         <h1 class="text-center text-danger mt-5">{{message}}</h1>
