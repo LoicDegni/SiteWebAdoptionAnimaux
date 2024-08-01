@@ -68,7 +68,7 @@ def rechercher():
                     resultat.append(animal)
     if not resultat:
         return render_template('resultat.html', message="Desolé, nous n'avons rien trouvé avec vos critères de recherche.")
-    return render_template('resultat.html', animaux=resultat)
+    return render_template('resultat.html', animaux=resultat, critere = requete)
 
 @app.route('/ajouter_un_animal', methods=["GET", "POST"])
 def ajouter_un_animal():
