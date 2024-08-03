@@ -5,14 +5,15 @@
 
 {% block content %} 
     <div class="container mt-5">
-        <form class="d-flex mx-3" action="/rechercher" method="GET">
-            <input class="form-control me-2" type="search" placeholder="Rechercher un animal à adopter" name="critere-de-recherche">
+        <form id="barre-recherche" class="d-flex mx-3" action="/rechercher" method="GET">
+            <input id="saisie" class="form-control me-2" type="search" placeholder="Rechercher un animal à adopter" name="critere-de-recherche">
             <button class="btn btn-outline-success" type="submit">Rechercher</button>
         </form>
+        <div id="message-erreur" class="text-danger mt-2 text-center fs-3 mb-4" style="display: none;"></div>
     </div>
 
     {% if critere %}
-        <h2 class="text-center text-dark mt-4">Résultat de la recherche pour le critère: <span class="text-primary">{{ critere }}</span></h2>
+        <h2 class="text-center text-dark mt-5">Résultat de la recherche pour le critère: <span class="text-primary">{{ critere }}</span></h2>
         <div class="d-flex flex-wrap justify-content-center">
             {% for animal in animaux %}
                 <div class="card card-personnalise">
@@ -28,10 +29,10 @@
                 </div>      
             {% endfor %}
         </div>
-    {% endif %}
-    
-    {% if message %}
-        <h1 class="text-center text-danger mt-5">{{message}}</h1>
-    {% endif %}
+        {% endif %}
+
+        {% if message %}
+            <h1 class="text-center text-danger mt-5">{{message}}</h1>
+        {% endif %}
     
 {% endblock %}

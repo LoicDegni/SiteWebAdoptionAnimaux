@@ -20,13 +20,14 @@
 
 
     <div class="container mt-5">
-        <form class="d-flex mx-3" action="/rechercher" method="GET">
-            <input class="form-control me-2" type="search" placeholder="Rechercher un animal à adopter" name="critere-de-recherche">
+        <form id="barre-recherche" class="d-flex mx-3" action="/rechercher" method="GET">
+            <input id="saisie" class="form-control me-2" type="search" placeholder="Rechercher un animal à adopter" name="critere-de-recherche">
             <button class="btn btn-outline-success" type="submit">Rechercher</button>
         </form>
+        <div id="message-erreur" class="text-danger mt-2 text-center fs-3 mb-4" style="display: none;"></div>
     </div>
 
-    <h2 class="text-center text-dark mt-4">Animaux disponibles</h2>
+    <h2 class="text-center text-dark mt-5">Animaux disponibles</h2>
     <div class="d-flex flex-wrap justify-content-center">
         {% for animal in animaux %}
             <div class="card card-personnalise">
@@ -42,5 +43,7 @@
             </div>      
         {% endfor %}
     </div>
+
+    <script src="{{ url_for('static', filename='js/barreRecherche.js') }}"></script>
 {%endblock%}
 

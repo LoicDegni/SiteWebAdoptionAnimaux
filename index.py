@@ -56,7 +56,7 @@ def adopter():
 
 @app.route('/rechercher')
 def rechercher():
-    requete = request.args.get('critere-de-recherche', '')
+    requete = request.args.get('critere-de-recherche', "").strip()
     db = get_db()
     animaux = db.get_animaux()
     resultat = []
@@ -66,9 +66,11 @@ def rechercher():
             for valeur in animal.values():
                 if requete.lower() in str(valeur).lower() and animal not in resultat:
                     resultat.append(animal)
-    if not resultat:
-        return render_template('resultat.html', message="Desolé, nous n'avons rien trouvé avec vos critères de recherche.")
-    return render_template('resultat.html', animaux=resultat, critere = requete)
+        if not resultat:
+            return render_template('resultat.html', message="Desolé, nous n'avons rien trouvé avec le critère de recherche: " + requete)
+        return render_template('resultat.html', animaux=resultat, critere = requete)
+    else:
+        return render_template('resultat.html', message="Critère vide ! Veuillez entrer un critère de recherche")
 
 @app.route('/ajouter_un_animal', methods=["GET", "POST"])
 def ajouter_un_animal():
