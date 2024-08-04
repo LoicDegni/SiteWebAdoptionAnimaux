@@ -1,4 +1,4 @@
-## Documentation
+# Documentation
 
 Ce projet a été réalisé dans le cadre du cours de INF3190 dispensé par le professeur Jacques Berger à l'Université du Quebec à Montréal.
 
@@ -42,7 +42,7 @@ Pour executer ce projet, il suffit de lancer la commande suivante à la racine d
 
 Le serveur sera lancé et l'application sera accessible sur le port 5000. Il suffit ainsi d'ouvrir un navigateur et de se rendre à l'adresse qui sera affichée sur la console.
 
-Exemple: 
+Exemple:
 
 ```bash
 ➜  inf3190_tp3 git:(main) ✗ make
