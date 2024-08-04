@@ -13,6 +13,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //Fonction de validation
 
+    /**
+     * Cette fonction permet de verifier le nom de l'animal
+     * Un nom est valide si le champ n'est pas vide et que le nom est compris entre 3 et 20 caractères
+     * 
+     * @returns true si le nom est valide, false sinon
+     */
     function validerNom() {
         var erreurNom = document.getElementById('erreurNom')
         erreurNom.textContent = '';
@@ -27,6 +33,12 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
     }
 
+    /**
+     * Cette fonction permet de verifier l'espece de l'animal
+     * Une espece est valide si le champ n'est pas vide et que l'espece est compris entre 0 et 25 caractères
+     * 
+     * @returns true si l'espece est valide, false sinon
+     */
     function validerEspece(){
         var erreurEspece = document.getElementById('erreurEspece');
         erreurEspece.textContent = '';
@@ -41,6 +53,12 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
     }
 
+    /**
+     * Cette fonction permet de verifier la race de l'animal
+     * La race est valide si le champ n'est pas vide et que la race est comprise entre 0 et 25 caractères
+     * 
+     * @returns true si la race est valide, false sinon
+     */
     function validerRace(){
         var erreurRace = document.getElementById('erreurRace');
         erreurRace.textContent = '';
@@ -55,6 +73,12 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
     }
 
+    /**
+     * Cette fonction permet de verifier l'age de l'animal
+     * L'age est valide si le champ n'est pas vide et que l'age est compris entre 0 et 30
+     * 
+     * @returns true si l'age est valide, false sinon
+     */
     function validerAge() {
         var erreurAge = document.getElementById('erreurAge')
         erreurAge.textContent = '';
@@ -70,6 +94,12 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
     }
 
+    /**
+     * Cette fonction permet de verifier la description de l'animal
+     * La description est valide si le champ n'est pas vide et que la description est comprise entre 0 et 500 caractères
+     * 
+     * @returns true si la description est valide, false sinon
+     */
     function validerDescritpion(){
         var erreurDescription = document.getElementById('erreurDescription');
         erreurDescription.textContent = '';
@@ -85,6 +115,12 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
     }
 
+    /**
+     * Cette fonction permet de verifier le courriel
+     * Le courriel est valide si le champ n'est pas vide et que le courriel est valide et compris entre 0 et 80 caractères
+     * 
+     * @returns true si le courriel est valide, false sinon
+     */
     function validerCourriel(){
         var erreurCourriel = document.getElementById('erreurCourriel');
         erreurCourriel.textContent = '';
@@ -106,6 +142,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    /**
+     * Cette fonction permet de verifier l'adresse
+     * L'adresse est valide si le champ n'est pas vide et que l'adresse est valide et comprise entre 0 et 75 caractères
+     * 
+     * @returns true si l'adresse est valide, false sinon
+     */
     function validerAdresse(){
         var erreurAdresse = document.getElementById('erreurAdresse');
         erreurAdresse.textContent = '';
@@ -127,6 +169,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    /**
+     * Cette fonction permet de verifier la ville
+     * La ville est valide si le champ n'est pas vide et que la ville est valide et comprise entre 0 et 75 caractères
+     * 
+     * @returns true si la ville est valide, false sinon
+     */
     function validerVille(){
         var erreurVille = document.getElementById('erreurVille');
         erreurVille.textContent = '';
@@ -148,6 +196,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    /**
+     * Cette fonction permet de verifier le code postal
+     * Le code postal est valide si le champ n'est pas vide et que le code postal est valide sous le format canadien A1A 1A1
+     * 
+     * @returns true si le code postal est valide, false sinon
+     */
     function validerCodePostal(){
         var erreurCodePostal = document.getElementById('erreurCodePostal');
         erreurCodePostal.textContent = '';
