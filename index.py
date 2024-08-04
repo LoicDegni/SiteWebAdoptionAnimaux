@@ -16,6 +16,7 @@ from flask import Flask,render_template, g, request, redirect, url_for, flash
 from .database import Database
 import random
 import re
+from .validation import valider_formulaire
 
 
 app = Flask(__name__, static_url_path="", static_folder="static")
@@ -75,53 +76,21 @@ def rechercher():
 @app.route('/ajouter_un_animal', methods=["GET", "POST"])
 def ajouter_un_animal():
     if request.method == 'POST':
-        nom = request.form['nom'].strip()
-        espece = request.form['espece'].strip()
-        race = request.form['race'].strip()
-        age = request.form['age'].strip()
-        description = request.form['description'].strip()
-        courriel = request.form['courriel'].strip()
-        adresse = request.form['adresse'].strip()
-        ville = request.form['ville'].strip()
-        code_postal = request.form['codePostal'].strip()
-
-        erreurs = []
-
-        # Validation côté backend
-        if not nom or len(nom) < 3 or len(nom) > 20:
-            erreurs.append("Le nom de l'animal doit être entre 3 et 20 caractères.")
-        
-        if not espece:
-            erreurs.append("Vous devez renseigner l'espèce de l'animal.")
-        
-        if not race:
-            erreurs.append("Vous devez renseigner la race de l'animal.")
-        
-        if not age.isdigit() or int(age) < 0 or int(age) > 30:
-            erreurs.append("L'âge de l'animal doit être compris entre 0 et 30.")
-        
-        if not description.strip():
-            erreurs.append("Vous devez renseigner la description de l'animal.")
-        
-        if not courriel or not re.fullmatch(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', courriel):
-            erreurs.append("Votre courriel n'est pas valide.")
-        
-        if not adresse or not re.fullmatch(r'^[0-9]+\s+[a-zA-Z0-9\s,.\'-]+$', adresse):
-            erreurs.append("L'adresse n'est pas valide.")
-        
-        if not ville or not re.match(r'^[a-zA-Z\s,.\'-]{2,}$', ville):
-            erreurs.append("La ville n'est pas valide.")
-        
-        if not code_postal or not re.fullmatch(r'^[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d$', code_postal):
-            erreurs.append("Le code postal n'est pas valide.")
-
-        if erreurs:
-            for erreur in erreurs:
-                flash(erreur, 'danger')
+        if(not valider_formulaire()):
+            print("Erreur, les données envoyées au backend sont invalides !")
             return render_template('ajouter.html')
         
         #Ajout de l'animal à la base de données
-        db = get_db()
-        id_animal_ajoute = db.add_animal(nom, espece, race, age, description, courriel, adresse, ville, code_postal)
+        id_animal_ajoute = get_db().add_animal(
+            request.form['nom'],
+            request.form['espece'],
+            request.form['race'],
+            request.form['age'],
+            request.form['description'],
+            request.form['courriel'],
+            request.form['adresse'],
+            request.form['ville'],
+            request.form['codePostal']
+        )
         return redirect(url_for('animal', id_animal=id_animal_ajoute))
     return render_template('ajouter.html')
