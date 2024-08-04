@@ -75,15 +75,15 @@ def rechercher():
 @app.route('/ajouter_un_animal', methods=["GET", "POST"])
 def ajouter_un_animal():
     if request.method == 'POST':
-        nom = request.form['nom']
-        espece = request.form['espece']
-        race = request.form['race']
-        age = request.form['age']
-        description = request.form['description']
-        courriel = request.form['courriel']
-        adresse = request.form['adresse']
-        ville = request.form['ville']
-        code_postal = request.form['codePostal']
+        nom = request.form['nom'].strip()
+        espece = request.form['espece'].strip()
+        race = request.form['race'].strip()
+        age = request.form['age'].strip()
+        description = request.form['description'].strip()
+        courriel = request.form['courriel'].strip()
+        adresse = request.form['adresse'].strip()
+        ville = request.form['ville'].strip()
+        code_postal = request.form['codePostal'].strip()
 
         erreurs = []
 
@@ -123,6 +123,5 @@ def ajouter_un_animal():
         #Ajout de l'animal à la base de données
         db = get_db()
         id_animal_ajoute = db.add_animal(nom, espece, race, age, description, courriel, adresse, ville, code_postal)
-        # flash("L'animal a été ajouté avec succès!", 'success')
         return redirect(url_for('animal', id_animal=id_animal_ajoute))
     return render_template('ajouter.html')

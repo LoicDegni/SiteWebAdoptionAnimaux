@@ -12,6 +12,12 @@ img{
     margin: 10px;
 }
 
+.card-personnalise-details-animal{
+    width: 25rem;
+    height: 25rem;
+    margin: 15px;
+}
+
 .card-corps {
     overflow-y: auto;
 }
@@ -38,4 +44,18 @@ img{
     height: 450px;
     display: flex;
     justify-content: center;
+}
+
+.reseau-sociaux {
+    width: 30px;
+    height: 30px;
+}
+
+.alignement-texte-apropos{
+    text-align: justify;
+}
+
+.formulaire {
+    padding-left: 80px;
+    padding-right: 80px;
 }

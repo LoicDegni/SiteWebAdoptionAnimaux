@@ -3,8 +3,21 @@
 {% block title %} {{ animal.nom }} {% endblock %}
 
 {% block content %} 
-    <h2>Nom: {{animal.nom}}</h2>
-    <p>Espece: {{animal.espece}}</p>
-    <p>Age: {{animal.age}}</p>
-    <p>Email: <a href="mailto:{{ animal.courriel }}">{{ animal.courriel }}</a></p>
+    <div class="d-flex flex-wrap justify-content-center mt-5 mb-5">
+            <div class="card card-personnalise-details-animal">
+                <div class="card-header">
+                    <h5 class="text-body-secondary text-center">{{ animal.nom }}</h5>
+                </div>
+                <div class="card-body card-corps">
+                    <p class="card-text"><span class="text-primary">Espece: </span>{{ animal.espece }}</p>
+                    <p class="card-text"><span class="text-primary">Description: </span>{{ animal.description }}</p>
+                    <p class="card-text"><span class="text-primary">Race: </span>{{ animal.race}}</p>
+                    <p class="card-text"><span class="text-primary">Age: </span>{{ animal.age }}</p>
+                    <p class="card-text"><span class="text-primary">Adresse: </span>{{ animal.adresse }}, {{ animal.ville }}, {{ animal.cp }}</p>
+                </div>
+                <div class="card-footer text-center">
+                    <small class="text-body-secondary"><a href="mailto:{{ animal['courriel'] }}" class="btn btn-outline-success">Contater le propriétaire</a></small>
+                </div>
+            </div>
+    </div>
 {%endblock%}

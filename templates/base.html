@@ -34,7 +34,65 @@
 
     <main>
         {% block content %} {%endblock%}
-    </main>    
+    </main>
+
+    <hr class="mb-0">
+
+    <footer class="bg-light text-center text-lg-start">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <h5 class="text-uppercase text-center">À propos</h5>
+                    <small>
+                        <p class="alignement-texte-apropos">
+                            Nous sommes une organisation dédiée à l'adoption d'animaux. 
+                            Nous croyons que chaque animal mérite une seconde chance et nous travaillons 
+                            dur pour les aider à trouver leur famille idéale.
+                        </p>
+                    </small>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5 class="text-uppercase text-center">Liens utiles</h5>
+                    <small>
+                        <ul class="list-unstyled text-center">
+                            <li><a href="{{ url_for('index') }}" class="text-primary text-decoration-none">Accueil</a></li>
+                            <li><a href="{{ url_for('ajouter_un_animal') }}" class="text-primary text-decoration-none">Mettre en adoption</a></li>
+                            <li><a href="{{ url_for('adopter') }}" class="text-primary text-decoration-none">Adopter</a></li>
+                        </ul>
+                    </small>   
+                </div>
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <h5 class="text-uppercase text-center">Contact</h5>
+                    <small class="text-center">
+                        <p>
+                            Email: <a href="mailto:alpha@adopteranimal.ca" class="text-dark">contact@adoptionanimaux.com</a><br>
+                            Téléphone: 438-123-1234<br>
+                            Adresse: 201 Rue du loup, Montréal, QC, H1H 1H1
+                        </p>
+                        <div class="d-flex mx-4 justify-content-center">
+                            <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
+                                <img src="/images/facebook.svg" alt="Facebook" class="mx-3 reseau-sociaux">
+                            </a>
+                            <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+                                <img src="/images/x.svg" alt="X anciennement Twitter" class="mx-3 reseau-sociaux">
+                            </a>
+                            <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+                                <img src="/images/instagram.svg" alt="Instagram" class="mx-3 reseau-sociaux">
+                            </a>
+                            <a href="https://github.com/alphaissiagadem" target="_blank" aria-label="Instagram">
+                                <img src="/images/github.svg" alt="Github" class="mx-3 reseau-sociaux">
+                            </a>
+                        </div>
+                    </small>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-3 bg-dark text-white">
+            &copy; {{ current_year }} Votre Site d'Adoption d'Animaux. Tous droits réservés.
+        </div>
+    </footer>
+    
+    
     <script src="/vendor/js/bootstrap.bundle.min.js"></script>
     <script src="/vendor/js/bootstrap.min.js"></script>
     <!-- <script src="/vendor/js/jquery-1.11.0.min.js"></script> -->
