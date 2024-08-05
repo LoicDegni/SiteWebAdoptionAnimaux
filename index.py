@@ -78,7 +78,7 @@ def ajouter_un_animal():
     if request.method == 'POST':
         if(not valider_formulaire()):
             print("Erreur, les données envoyées au backend sont invalides !")
-            return render_template('ajouter.html')
+            return render_template("erreur-back-end.html"),422
         
         #Ajout de l'animal à la base de données
         id_animal_ajoute = get_db().add_animal(
