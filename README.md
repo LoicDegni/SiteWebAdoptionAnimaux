@@ -6,9 +6,9 @@ Ce projet est une application web implementée à partir de Python, Flask et Boo
 
 ## Auteurs
 
-1- Alpha Issiaga DEM - DEMA06129900
+1- Alpha Issiaga DEM
 
-2- Kaikou Loic DEGNI - DEGK24059500
+2- Kaikou Loic DEGNI
 
 ## Structure
 
